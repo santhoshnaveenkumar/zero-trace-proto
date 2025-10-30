@@ -57,6 +57,19 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
+        },
+        cyber: {
+          glow: "hsl(var(--cyber-glow))",
+          dark: "hsl(var(--cyber-dark))",
+          panel: "hsl(var(--cyber-panel))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -80,10 +93,32 @@ export default {
             height: "0",
           },
         },
+        "pulse-glow": {
+          "0%, 100%": {
+            opacity: "1",
+            boxShadow: "0 0 10px hsl(var(--cyber-glow) / 0.5)",
+          },
+          "50%": {
+            opacity: "0.7",
+            boxShadow: "0 0 20px hsl(var(--cyber-glow) / 0.8)",
+          },
+        },
+        "slide-in-up": {
+          from: {
+            transform: "translateY(10px)",
+            opacity: "0",
+          },
+          to: {
+            transform: "translateY(0)",
+            opacity: "1",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
+        "slide-in-up": "slide-in-up 0.3s ease-out",
       },
     },
   },
