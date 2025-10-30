@@ -1,21 +1,22 @@
 import { useState } from "react";
 import { Shield, Activity, FileText, Settings, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Link, useLocation } from "react-router-dom";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
 }
 
 const navigation = [
-  { name: "Dashboard", icon: Activity, id: "dashboard" },
-  { name: "Threat Logs", icon: Shield, id: "threats" },
-  { name: "Reports", icon: FileText, id: "reports" },
-  { name: "Settings", icon: Settings, id: "settings" },
+  { name: "Dashboard", icon: Activity, id: "dashboard", path: "/" },
+  { name: "Threat Logs", icon: Shield, id: "threats", path: "/logs" },
+  { name: "Reports", icon: FileText, id: "reports", path: "/reports" },
+  { name: "Settings", icon: Settings, id: "settings", path: "/settings" },
 ];
 
 export function DashboardLayout({ children }: DashboardLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [activeTab, setActiveTab] = useState("dashboard");
+  const location = useLocation();
 
   return (
     <div className="flex h-screen w-full overflow-hidden">
@@ -50,11 +51,11 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         <nav className="flex-1 p-3 space-y-1">
           {navigation.map((item) => {
             const Icon = item.icon;
-            const isActive = activeTab === item.id;
+            const isActive = location.pathname === item.path;
             return (
-              <button
+              <Link
                 key={item.id}
-                onClick={() => setActiveTab(item.id)}
+                to={item.path}
                 className={cn(
                   "w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all",
                   isActive
@@ -66,7 +67,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
                 {sidebarOpen && (
                   <span className="font-medium">{item.name}</span>
                 )}
-              </button>
+              </Link>
             );
           })}
         </nav>

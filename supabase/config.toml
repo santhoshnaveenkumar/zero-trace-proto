@@ -1,1 +1,19 @@
 project_id = "hfzjbasdzlqzfdvlqusu"
+
+[functions.status-get]
+verify_jwt = false
+
+[functions.status-update]
+verify_jwt = false
+
+[functions.logs-get]
+verify_jwt = false
+
+[functions.settings-update]
+verify_jwt = false
+
+[functions.report-get]
+verify_jwt = false
+
+[functions.telemetry-simulator]
+verify_jwt = false

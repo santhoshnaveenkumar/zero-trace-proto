@@ -14,7 +14,75 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      settings: {
+        Row: {
+          auto_block_enabled: boolean
+          entropy_threshold: number
+          id: string
+          monitoring_enabled: boolean
+          rename_threshold: number
+          updated_at: string
+          webhook_url: string | null
+        }
+        Insert: {
+          auto_block_enabled?: boolean
+          entropy_threshold?: number
+          id?: string
+          monitoring_enabled?: boolean
+          rename_threshold?: number
+          updated_at?: string
+          webhook_url?: string | null
+        }
+        Update: {
+          auto_block_enabled?: boolean
+          entropy_threshold?: number
+          id?: string
+          monitoring_enabled?: boolean
+          rename_threshold?: number
+          updated_at?: string
+          webhook_url?: string | null
+        }
+        Relationships: []
+      }
+      system_logs: {
+        Row: {
+          action_taken: string
+          created_at: string
+          entropy_score: number
+          event_type: string
+          file_path: string
+          id: string
+          process_name: string
+          rename_count: number | null
+          severity: string
+          timestamp: string
+        }
+        Insert: {
+          action_taken: string
+          created_at?: string
+          entropy_score: number
+          event_type: string
+          file_path: string
+          id?: string
+          process_name: string
+          rename_count?: number | null
+          severity: string
+          timestamp?: string
+        }
+        Update: {
+          action_taken?: string
+          created_at?: string
+          entropy_score?: number
+          event_type?: string
+          file_path?: string
+          id?: string
+          process_name?: string
+          rename_count?: number | null
+          severity?: string
+          timestamp?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
